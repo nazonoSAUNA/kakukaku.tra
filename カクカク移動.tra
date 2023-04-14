@@ -1,0 +1,29 @@
+--[[
+ トラックバー設定値（移動フレーム間隔）にマイクロ秒で更新間隔を指定する
+ 30fpsで1フレーム飛ばし→2/30秒に1回描画する→1000000*2/30≒66667
+ 60fpsで5フレーム飛ばし→6/60秒に1回描画する→1000000*6/60＝100000
+]]
+--param:133333
+
+local t = obj.getpoint("time")
+t = t - math.floor(1000000.0 * t) % math.max(1, obj.getpoint("param")) / 1000000.0
+
+local i = math.ceil(obj.getpoint("index"))
+local t0
+local t1 = obj.getpoint("time", i)
+while 0 < i do
+ i = i - 1
+ t0 = obj.getpoint("time", i)
+ if t0 <= t then
+  break
+ end
+ t1 = t0
+end
+
+local v0 = obj.getpoint(i);
+
+if 0 < t and t0 < t1 then
+ local v1 = obj.getpoint(i + 1);
+ return v0 + (v1 - v0) * (t - t0) / (t1 - t0)
+end
+return v0
