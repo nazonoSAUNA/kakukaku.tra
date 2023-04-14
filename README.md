@@ -1,6 +1,9 @@
 # カクカク移動.trascript
 コマ落ち的な移動をするAviUtlトラックバー変化スクリプト
 
+![image](https://user-images.githubusercontent.com/99536641/232079080-6433f898-9e39-42bc-bfea-b7a4fe4a9044.png)
+
+
 # 導入方法
 [Release](../../releases/) などの Source code (zip) などからダウンロードします。
 カクカク移動.traをscriptフォルダあたりにいれます（他のトラックバー変化スクリプト.traと同じように導入します）
